@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CatRepository {
-    private final String filePath = "cats.json";
+    private final String filePath = "src/cats.json";
 
     List<Cat> getCats() {
         Gson gson = new Gson();
