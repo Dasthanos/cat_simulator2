@@ -39,6 +39,7 @@ public class Main {
                         System.out.println("Вы отвели кота " + selectedCat.getName() + " к ветеринару");
                     }
                     catRepository.saveCats(cats);
+                    break;
                 case "a":
                 case "а":
                     addCat(cats, catRepository);
@@ -46,14 +47,11 @@ public class Main {
                 default:
                     System.out.println("Неверная команда, попробуйте снова.");
             }
-
-
-
-            break;
         }
     }
 
     private static Cat selectedCat (List<Cat> cats, Scanner scanner){
+        printCatTable(cats);
         if(cats.isEmpty()){
             System.out.println("Список котов пуст!");
             return null;

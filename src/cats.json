@@ -7,6 +7,13 @@
     "satiety": 50
   },
   {
+    "name": "dastan",
+    "age": 18,
+    "health": 53,
+    "mood": 71,
+    "satiety": 71
+  },
+  {
     "name": "Jasper",
     "age": 12,
     "health": 83,
@@ -19,5 +26,12 @@
     "health": 38,
     "mood": 57,
     "satiety": 71
+  },
+  {
+    "name": "1",
+    "age": 1,
+    "health": 70,
+    "mood": 39,
+    "satiety": 29
   }
 ]

@@ -62,15 +62,50 @@ public class Cat {
         this.satiety = 20 + random.nextInt(61);
     }
 
-    public void feed(){
-
+    // Кормить: увеличивает сытость и настроение
+    public void feed() {
+        int up = getStepUp();
+        this.satiety = clamp(this.satiety + up);
+        this.mood = clamp(this.mood + up);
     }
 
-    public void play(){
-
+    // Лечить: увеличивает здоровье; настроение и сытость уменьшаются
+    public void heal() {
+        int up = getStepUp();
+        int down = getStepDown();
+        this.health = clamp(this.health + up);
+        this.mood = clamp(this.mood - down);
+        this.satiety = clamp(this.satiety - down);
     }
 
-    public void heal(){}
+    // Играть: увеличивает настроение и здоровье; сытость уменьшается
+    public void play() {
+        int up = getStepUp();
+        int down = getStepDown();
+        this.mood = clamp(this.mood + up);
+        this.health = clamp(this.health + up);
+        this.satiety = clamp(this.satiety - down);
+    }
+
+    // Возвращает шаг увеличения в зависимости от возраста
+    private int getStepUp() {
+        if (this.age <= 5) return 7;
+        if (this.age <= 10) return 5;
+        return 4;
+    }
+
+    // Возвращает шаг уменьшения в зависимости от возраста
+    private int getStepDown() {
+        if (this.age <= 5) return 3;
+        if (this.age <= 10) return 5;
+        return 6;
+    }
+
+    // Утилита для удержания значения в рамках [0, 100]
+    private int clamp(int value) {
+        return Math.max(0, Math.min(100, value));
+    }
+
 
 
 }
