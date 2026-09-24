@@ -62,31 +62,15 @@ public class Cat {
         this.satiety = 20 + random.nextInt(61);
     }
 
-    public void addCat(List<Cat> cats, CatRepository repository){
-        System.out.println("Введите имя кота: ");
-        Scanner scanner = new Scanner(System.in);
-        String catName = scanner.nextLine().trim();
-        if(catName.isEmpty()){
-            System.out.println("Ошибка: имя не может быть пустым!");
-            return;
-        }
-        System.out.print("Введите возраст кота (1-18): ");
-        int age;
-        try {
-            age = Integer.parseInt(scanner.nextLine().trim());
-            if(age<1 || age>18){
-                System.out.println("Ошибка: возраст должен быть от 1 до 18!");
-                return;
-            }
-        } catch (NumberFormatException e){
-            System.out.println("Ошибка: возраст должен быть числом!");
-            return;
-        }
-
-        Cat newCat = new Cat(catName, age);
-        cats.add(newCat);
-        repository.saveCats(cats);
-        System.out.println("Кот " + catName + " успешно добавлен!");
+    public void feed(){
 
     }
+
+    public void play(){
+
+    }
+
+    public void heal(){}
+
+
 }
