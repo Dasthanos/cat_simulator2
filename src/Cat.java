@@ -62,6 +62,24 @@ public class Cat {
         this.satiety = 20 + random.nextInt(61);
     }
 
+    public void nextDay() {
+        Random random = new Random();
+
+
+        int satietyDelta = random.nextInt(5) + 1;
+        this.satiety = Math.min(100, Math.max(0, this.satiety - satietyDelta));
+
+
+        int moodDelta = random.nextInt(7) - 3;
+        this.mood = Math.min(100, Math.max(0, this.mood + moodDelta));
+
+        int healthDelta = random.nextInt(7) - 3;
+        this.health = Math.min(100, Math.max(0, this.health + healthDelta));
+    }
+
+
+
+
     // Кормить: увеличивает сытость и настроение
     public void feed() {
         int up = getStepUp();
