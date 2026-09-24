@@ -1,3 +1,7 @@
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+
 public class Cat {
     private String name;
     private int age;
@@ -49,11 +53,40 @@ public class Cat {
         return satiety;
     }
 
-    public Cat(String name, int age, int health, int mood, int satiety) {
+    public Cat(String name, int age) {
         this.name = name;
         this.age = age;
-        this.health = health;
-        this.mood = mood;
-        this.satiety = satiety;
+        Random random = new Random();
+        this.health = 20 + random.nextInt(61);
+        this.mood = 20 + random.nextInt(61);
+        this.satiety = 20 + random.nextInt(61);
+    }
+
+    public void addCat(List<Cat> cats, CatRepository repository){
+        System.out.println("Введите имя кота: ");
+        Scanner scanner = new Scanner(System.in);
+        String catName = scanner.nextLine().trim();
+        if(catName.isEmpty()){
+            System.out.println("Ошибка: имя не может быть пустым!");
+            return;
+        }
+        System.out.print("Введите возраст кота (1-18): ");
+        int age;
+        try {
+            age = Integer.parseInt(scanner.nextLine().trim());
+            if(age<1 || age>18){
+                System.out.println("Ошибка: возраст должен быть от 1 до 18!");
+                return;
+            }
+        } catch (NumberFormatException e){
+            System.out.println("Ошибка: возраст должен быть числом!");
+            return;
+        }
+
+        Cat newCat = new Cat(catName, age);
+        cats.add(newCat);
+        repository.saveCats(cats);
+        System.out.println("Кот " + catName + " успешно добавлен!");
+
     }
 }

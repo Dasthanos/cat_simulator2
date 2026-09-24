@@ -7,7 +7,6 @@ public class Main {
         List<Cat> cats = catRepository.getCats();
         cats.sort(Comparator.comparingDouble(Cat::getAverageLevel).reversed());
 
-
         printCatTable(cats);
 
         while (true) {
